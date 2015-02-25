@@ -44,12 +44,25 @@ class DvdController extends Controller {
 
   public function createReview(Request $request, $id)
   {
-    $name_query = DB::table('dvds')
-      ->select('title')
-      ->where('id', '=', $id);
-    $name_array = $name_query->get();
-    if (sizeof($name_array) > 0) {
-      $name = $name_array[0];
+    $dvd_query = DB::table('dvds')
+      ->select([
+        DB::raw('title as title'),
+        DB::raw('format_name as format'),
+        DB::raw('genre_name as genre'),
+        DB::raw('label_name as label'),
+        DB::raw('rating_name as rating'),
+        DB::raw('sound_name as sound'),
+        DB::raw('DATE_FORMAT(release_date, "%d %M %Y") as date')
+      ])
+      ->join('formats', 'dvds.format_id', '=', 'formats.id')
+      ->join('genres', 'dvds.genre_id', '=', 'genres.id')
+      ->join('labels', 'dvds.label_id', '=', 'labels.id')
+      ->join('ratings', 'dvds.rating_id', '=', 'ratings.id')
+      ->join('sounds', 'dvds.sound_id', '=', 'sounds.id')
+      ->where('dvds.id', '=', $id);
+    $dvd_array = $dvd_query->get();
+    if (sizeof($dvd_array) > 0) {
+      $dvd = $dvd_array[0];
     } else {
       return redirect('/dvds/');
     }
@@ -58,7 +71,7 @@ class DvdController extends Controller {
       ->where('dvd_id', '=', $id);
     $reviews = $reviews_query->get();
     return view('reviews', [
-        'dvd' => $name,
+        'dvd' => $dvd,
         'dvd_id' => $id,
         'reviews' => $reviews
     ]);
