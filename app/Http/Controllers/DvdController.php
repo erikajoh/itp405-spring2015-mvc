@@ -70,7 +70,7 @@ class DvdController extends Controller {
     $validation = \Validator::make($request->all(), [
       'dvd_id' => 'required|integer',
       'title' => 'required|min:5',
-      'rating' => 'required|integer',
+      'rating' => 'required|integer|min:1|max:10',
       'description' => 'required|min:20'
       ]);
     if ($validation->passes()) {
