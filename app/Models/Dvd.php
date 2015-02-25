@@ -8,6 +8,7 @@ class Dvd {
   {
     $query = \DB::table('dvds')
       ->select([
+        DB::raw('dvds.id as id'),
         DB::raw('title as title'),
         DB::raw('format_name as format'),
         DB::raw('genre_name as genre'),

@@ -13,7 +13,7 @@
     <title>DVD Search</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
-<body style="margin: 20px;">
+<body>
 
 <?php
 
@@ -23,34 +23,41 @@
 
 ?>
 
-<h1>Search</h1>
+<div class="container">
 
-<p>Search for a DVD. <a href="/dvds">Or show them all!</a></p>
+	<h1>Search</h1>
 
-<br>
+	<p>Search for a DVD <a href="/dvds">or show them all</a></p>
 
-<form action="/dvds" method="GET">
-	Title:
-	<input type="text" name="title">
-	<br><br>
-	Genre:
-	<select name="genre">
-	<div><option value="">All</option></div>
-	<?php foreach($genres as $genre): ?>
-	<div><?php echo '<option value="' . $genre->id . '">' . $genre->genre_name . '</option>' ?></div>
-	<?php endforeach; ?>
-	</select>
 	<br>
-	Rating:
-	<select name="rating">
-	<div><option value="">All</option></div>
-	<?php foreach($ratings as $rating): ?>
-	<div><?php echo '<option value="' . $rating->id . '">' . $rating->rating_name . '</option>' ?></div>
-	<?php endforeach; ?>
-	</select>
-	<br><br>
-	<button type="submit">search it!</button>
+
+	<form action="/dvds" method="GET">
+		<div class="form-group">
+			Title:
+			<input type="text" name="title" class="form-control">
+		</div>
+		<div class="form-group">
+			Genre:
+			<select name="genre" class="form-control">
+			<div><option value="">All</option></div>
+			<?php foreach($genres as $genre): ?>
+			<div><?php echo '<option value="' . $genre->id . '">' . $genre->genre_name . '</option>' ?></div>
+			<?php endforeach; ?>
+			</select>
+		</div>
+		<div class="form-group">
+			Rating:
+			<select name="rating" class="form-control">
+			<div><option value="">All</option></div>
+			<?php foreach($ratings as $rating): ?>
+			<div><?php echo '<option value="' . $rating->id . '">' . $rating->rating_name . '</option>' ?></div>
+			<?php endforeach; ?>
+			</select>
+		</div>
+		<br>
+		<button type="submit" class="btn btn-default">search it!</button>
 	</form>
+</div>
 
 </body>
 </html>

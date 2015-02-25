@@ -13,7 +13,6 @@ class DvdController extends Controller {
     ]);
   }
 
-
   public function results(Request $request)
   {
     $title = $request->input('title');
@@ -21,14 +20,14 @@ class DvdController extends Controller {
     $rating = $request->input('rating');
 
     if ($genre) {
-      $genre_query = \DB::table('genres')
+      $genre_query = DB::table('genres')
         ->select('genre_name')
         ->where('id', '=', $genre);
       $genre_name = $genre_query->get()[0];
     } else $genre_name = '';
 
     if ($rating) {
-      $rating_query = \DB::table('ratings')
+      $rating_query = DB::table('ratings')
         ->select('rating_name')
         ->where('id', '=', $rating);
       $rating_name = $rating_query->get()[0];
@@ -40,6 +39,54 @@ class DvdController extends Controller {
         'searchGenre' => $genre_name,
         'searchRating' => $rating_name,
         'dvdCount' => Dvd::create()->count()
+    ]);
+  }
+
+  public function createReview(Request $request, $id)
+  {
+    $name_query = DB::table('dvds')
+      ->select('title')
+      ->where('id', '=', $id);
+    $name_array = $name_query->get();
+    if (sizeof($name_array) > 0) {
+      $name = $name_array[0];
+    } else {
+      return redirect('/dvds/');
+    }
+    $reviews_query = DB::table('reviews')
+      ->select('title', 'description', 'rating')
+      ->where('dvd_id', '=', $id);
+    $reviews = $reviews_query->get();
+    return view('reviews', [
+        'dvd' => $name,
+        'dvd_id' => $id,
+        'reviews' => $reviews
+    ]);
+  }
+
+  public function storeReview(Request $request)
+  {
+    $id = $request->input('dvd_id');
+    $validation = \Validator::make($request->all(), [
+      'dvd_id' => 'required|integer',
+      'title' => 'required|min:5',
+      'rating' => 'required|integer',
+      'description' => 'required|min:20'
+      ]);
+    if ($validation->passes()) {
+      DB::table('reviews')->insert([
+        'dvd_id' => $request->input('dvd_id'),
+        'title' => $request->input('title'),
+        'rating' => $request->input('rating'),
+        'description' => $request->input('description')
+        ]);
+      return redirect('/dvds/' . $id)->with('success', 'Review successfully saved');
+    } else {
+      return redirect('/dvds/' . $id)
+      ->withInput()
+      ->withErrors($validation);
+    }
+    return view('/dvds/' . $id, [
     ]);
   }
 
