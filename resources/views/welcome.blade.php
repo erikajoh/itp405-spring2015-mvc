@@ -1,17 +1,22 @@
 <html>
 	<head>
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-
+		<link href='//fonts.googleapis.com/css?family=Lato:100,200,300' rel='stylesheet' type='text/css'>
+    	<meta charset="UTF-8">
+    	<title>The DVD App</title>
 		<style>
 			body {
 				margin: 0;
 				padding: 0;
 				width: 100%;
 				height: 100%;
-				color: #B0BEC5;
 				display: table;
-				font-weight: 100;
+				font-weight: 200;
 				font-family: 'Lato';
+			}
+
+			p {
+				font-family: 'Avenir';
+				font-size: 14px;
 			}
 
 			.container {
@@ -27,20 +32,25 @@
 
 			.title {
 				font-size: 96px;
-				margin-bottom: 40px;
+				margin-bottom: 20px;
 			}
 
 			.quote {
 				font-size: 24px;
+				margin-bottom: 140px;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
-			<div class="content">
-				<div class="title">Laravel 5</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
-			</div>
+
+			<div class="title">The DVD App</div>
+			<div class="quote">DVDs por favor :)</div>
+
+			<p><a href="dvds/search">search</a> &nbsp; // &nbsp; <a href="dvds/create">create</a> &nbsp; // &nbsp; <a href="dvds">view all</a></p>
+
 		</div>
+
+
 	</body>
 </html>

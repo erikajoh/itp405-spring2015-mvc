@@ -30,17 +30,16 @@
 
 	<h1>Reviews</h1>
 
-	<p>Review <strong>{{ $dvd->title }}</strong> <a href="/dvds">or show all DVDs</a></p>
+	<p>Review <strong>{{ $dvd->title }}</strong> <a href="/">or go home</a></p>
 
 	@foreach ($errors->all() as $errorMessage)
 		<p style="color:red;">{{ $errorMessage }}</p>
 	@endforeach
+	@if(Session::has('success'))
+		<p style="background:green;color:white;">{{ Session::get('success') }}</p>
+	@endif
 
 	<br>
-
-	@if (Session::has('success'))
-		<p>{{ Session::get('success') }}</p>
-	@endif
 
 	<form method="post" action="/dvds/reviews">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -105,6 +104,6 @@
     	</table>
 	@endif
 
-	<br>
+	<br><br>
 
 @stop

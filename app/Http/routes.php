@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Dvd;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,6 +15,11 @@
 
 Route::get('/', 'WelcomeController@index');
 Route::get('/dvds/search', 'DvdController@search');
+Route::get('/dvds/create', 'DvdController@create');
+Route::post('/dvds', 'DvdController@store');
 Route::get('/dvds', 'DvdController@results');
-Route::get('dvds/{id}', 'DvdController@createReview');
-Route::post('dvds/{id}', 'DvdController@storeReview');
+Route::get('/dvds/{id}', 'ReviewController@create');
+Route::post('/dvds/{id}', 'ReviewController@store');
+Route::get('/genres/{genre_name?}/dvds', 'GenreController@results')
+	->where('genre_name', '(.*)');
+Route::get('/eager-loading', 'LoadingController@eagerLoading');

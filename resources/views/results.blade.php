@@ -24,7 +24,7 @@
     @endif
     <a href="/dvds/search"> or back to search</a></p>
   @else
-  <p>Showing all <strong>{{ $dvdCount }}</strong> DVDs <a href="/dvds/search"> or looking for something specific?</a></p>
+  <p>Showing all <strong>{{ sizeof($dvds) }}</strong> DVDs <a href="/">or go home</a></p>
   @endif
 
   @if (sizeof($dvds) > 0)
@@ -56,6 +56,6 @@
     </table>
   @endif
 
-  <br>
+  <br><br>
 
 @stop
