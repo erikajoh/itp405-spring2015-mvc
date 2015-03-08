@@ -4,28 +4,28 @@
 
   <h1>Results</h1>
 
-  @if ($searchTitle != '')
-  <p>
-    @if (sizeof($dvds) > 0)
-      Showing <strong>{{ sizeof($dvds) }}</strong> results
-    @else
-      No results
-    @endif
-    for <strong>{{ $searchTitle }}</strong> in 
-    @if ($searchGenre != '')
-      <strong>{{ $searchGenre->genre_name }}</strong> and 
-    @else
-      <strong>all genres</strong> and 
-    @endif
-    @if ($searchRating != '')
-      <strong>{{ $searchRating->rating_name }}</strong>
-    @else
-      <strong>all ratings</strong>
-    @endif
-    <a href="/dvds/search"> or back to search</a></p>
+ <p>
+  @if (sizeof($dvds) > 0)
+    Showing <strong>{{ sizeof($dvds) }}</strong> results
   @else
-  <p>Showing all <strong>{{ sizeof($dvds) }}</strong> DVDs <a href="/">or go home</a></p>
+    No results
   @endif
+  @if ($searchTitle != '')
+    for <strong>{{ $searchTitle }}</strong> 
+  @else
+    for <strong>all titles</strong>
+  @endif
+  @if ($searchGenre != '')
+    in <strong>{{ $searchGenre->genre_name }}</strong> 
+  @else
+    in <strong>all genres</strong> 
+  @endif
+  @if ($searchRating != '')
+    with <strong>{{ $searchRating->rating_name }}</strong>
+  @else
+    with <strong>all ratings</strong>
+  @endif
+  <a href="/">or go home</a>
 
   @if (sizeof($dvds) > 0)
     <table class="table table-striped">
