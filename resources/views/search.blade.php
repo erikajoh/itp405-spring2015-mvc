@@ -24,7 +24,7 @@
 			<select name="genre_id" class="form-control">
 			<div><option value="">All</option></div>
 			@foreach($genres as $genre)
-			<div><option value=" {{ $genre->id }} "> {{ $genre->genre_name }} </option></div>
+			<div><option value="{{ $genre->id }}"> {{ $genre->genre_name }} </option></div>
 			@endforeach
 			</select>
 		</div>
@@ -34,7 +34,7 @@
 			<select name="rating_id" class="form-control">
 			<div><option value="">All</option></div>
 			@foreach ($ratings as $rating)
-			<div><option value="' {{ $rating->id }} "> {{ $rating->rating_name }} </option></div>
+			<div><option value="{{ $rating->id }}"> {{ $rating->rating_name }} </option></div>
 			@endforeach
 			</select>
 		</div>
