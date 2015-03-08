@@ -18,7 +18,7 @@
       <strong>all genres</strong> and 
     @endif
     @if ($searchRating != '')
-      <strong>{{ $searchRating->rating_name }}</strong>.
+      <strong>{{ $searchRating->rating_name }}</strong>
     @else
       <strong>all ratings</strong>
     @endif
