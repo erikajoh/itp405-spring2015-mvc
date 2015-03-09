@@ -12,6 +12,7 @@
 				display: table;
 				font-weight: 200;
 				font-family: 'Lato';
+				background-color: #FBFBF8;
 			}
 
 			p {
@@ -39,9 +40,41 @@
 				font-size: 24px;
 				margin-bottom: 140px;
 			}
+
+			a, a:link, a:visited, a:active {
+				color: gray;
+				text-decoration: none;
+			}
+
+			a:hover {
+				color: gray;
+				text-decoration: underline;
+			}
+
+			.flowers-right {
+				height:100vh;
+				right:0;
+				float:right;
+				position:fixed;
+			}
+
+			.flowers-left {
+				height:100vh;
+				left:0;
+				float:left;
+				position:fixed;
+				-moz-transform: scaleX(-1);
+		        -o-transform: scaleX(-1);
+		        -webkit-transform: scaleX(-1);
+		        transform: scaleX(-1);
+		        filter: FlipH;
+		        -ms-filter: 'FlipH';
+			}
+
 		</style>
 	</head>
 	<body>
+		<img src="{{asset('assets/flowers.png')}}" class="flowers-left">
 		<div class="container">
 
 			<div class="title">The DVD App</div>
@@ -50,7 +83,6 @@
 			<p><a href="dvds/search">search</a> &nbsp; // &nbsp; <a href="dvds/create">create</a> &nbsp; // &nbsp; <a href="dvds">view all</a></p>
 
 		</div>
-
-
+		<img src="{{asset('assets/flowers.png')}}" class="flowers-right">
 	</body>
 </html>
