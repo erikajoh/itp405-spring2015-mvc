@@ -7,12 +7,24 @@
     <style>
 
 	    body {
+	    	display: block;
 			font-family: 'Avenir';
 			background-color: #FBFBF8;
+			color: #008195;
+		}
+
+		h1, h2, h3, h4, h5 {
+			font-family: 'Avenir Next';
+			text-transform: uppercase;
+			font-weight: normal;
+		}
+
+		strong {
+			font-family: 'Avenir Next';
 		}
 
 		a, a:link, a:hover, a:visited, a:active {
-			color: gray;
+			color: #C01A36;
 		}
 
 		.flowers-right {
@@ -33,6 +45,10 @@
 	        transform: scaleX(-1);
 	        filter: FlipH;
 	        -ms-filter: 'FlipH';
+		}
+
+		.btn {
+			color: #C01A36;
 		}
 
     </style>

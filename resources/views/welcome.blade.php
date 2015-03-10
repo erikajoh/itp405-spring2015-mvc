@@ -11,13 +11,15 @@
 				height: 100%;
 				display: table;
 				font-weight: 200;
-				font-family: 'Lato';
+				font-family: 'Avenir';
 				background-color: #FBFBF8;
+				color: #008195;
 			}
 
 			p {
 				font-family: 'Avenir';
 				font-size: 14px;
+				color: #008195;
 			}
 
 			.container {
@@ -38,16 +40,18 @@
 
 			.quote {
 				font-size: 24px;
-				margin-bottom: 140px;
+				margin-bottom: 80px;
+				color: #008195;
+				font-family: 'Avenir Next';
 			}
 
 			a, a:link, a:visited, a:active {
-				color: gray;
+				color: #C01A36;
 				text-decoration: none;
 			}
 
 			a:hover {
-				color: gray;
+				color: #C01A36;
 				text-decoration: underline;
 			}
 
@@ -77,9 +81,14 @@
 		<img src="{{asset('assets/flowers.png')}}" class="flowers-left">
 		<div class="container">
 
-			<div class="title">The DVD App</div>
+			<div class="title">
+				<!-- <img src="{{asset('assets/dvd.png')}}" width="10%"> -->
+				<!-- <br> -->
+				THE DVD APP
+			</div>
 			<div class="quote">DVDs por favor :)</div>
-
+			<img src="{{asset('assets/dvd.png')}}" width="10%">
+			<br><br>
 			<p><a href="dvds/search">search</a> &nbsp; // &nbsp; <a href="dvds/create">create</a> &nbsp; // &nbsp; <a href="dvds">view all</a></p>
 
 		</div>
