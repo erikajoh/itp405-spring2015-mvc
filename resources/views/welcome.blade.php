@@ -2,6 +2,8 @@
 
 @section('content')
 
+<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+
 <style>
 	body {
 		background: #C01A36;
@@ -31,6 +33,13 @@
 
 	.nav a {
 		color: #008195;
+	}
+
+	.title {
+		font-size: 68px;
+		margin-bottom: 20px;
+		font-family: 'Shadows Into Light';
+		color: white;
 	}
 
 </style>
