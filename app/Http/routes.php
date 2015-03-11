@@ -14,6 +14,7 @@ use App\Models\Dvd;
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/about', 'WelcomeController@about');
 Route::get('/dvds/search', 'DvdController@search');
 Route::get('/dvds/create', 'DvdController@create');
 Route::post('/dvds', 'DvdController@store');
