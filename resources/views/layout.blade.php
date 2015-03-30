@@ -17,11 +17,12 @@
 		h1, h2, h3, h4, h5 {
 			font-family: 'Avenir Next';
 			text-transform: uppercase;
-			font-weight: normal;
+			font-weight: 400;
 		}
 
-		strong {
+		strong, b, th, label {
 			font-family: 'Avenir Next';
+			font-weight: 500;
 		}
 
 		a, a:link, a:hover, a:visited, a:active {

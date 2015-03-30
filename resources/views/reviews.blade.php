@@ -2,6 +2,10 @@
 
 @section('content')
 
+<div class="col-md-1">
+</div>
+
+<div class="col-md-6">
 	<h1>{{ $dvd->title }}</h1>
 	<table class="table table-striped">
       <thead>
@@ -103,7 +107,51 @@
 	      </tbody>
     	</table>
 	@endif
+</div>
 
+<div class="col-md-1">
+</div>
+
+<div class="col-md-3">
+	<h1>Ratings</h1>
+	<b>Critic Score</b>
+	@if ($rt_data->critics_score != -1)
+		{{ $rt_data->critics_score }}
+	@else
+		not listed
+	@endif
+	<br>
+	<b>Audience Score</b>
+	@if ($rt_data->audience_score != -1)
+		{{ $rt_data->audience_score }}
+	@else
+		not listed
+	@endif
+	<br>
+	<b>Runtime</b>
+	@if ($rt_data->runtime != -1)
+		{{ $rt_data->runtime }} min
+	@else
+		not listed
+	@endif
+	<br>
+	<b>Abridged Cast</b>
+	@if ($rt_data->abridged_cast != NULL)
+		@foreach ($rt_data->abridged_cast as $abridged_cast_member)
+			{{ $abridged_cast_member->name }}
+		@endforeach
+	@else
+		not listed
+	@endif
 	<br><br>
+	@if ($rt_data->image_href != NULL)
+		<img src="{{ $rt_data->image_href }}" width="100%">
+	@endif
+</div>
+
+<div class="col-md-1">
+</div>
+
+<br><br>
 
 @stop

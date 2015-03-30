@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\RottenTomatoes;
 
 use DB;
 
@@ -30,6 +31,9 @@ class ReviewController extends Controller {
     } else {
       return redirect('/dvds/');
     }
+
+    $rt_data = RottenTomatoes::search($dvd->title);    
+
     $reviews_query = DB::table('reviews')
       ->select('title', 'description', 'rating')
       ->where('dvd_id', '=', $id);
@@ -37,7 +41,8 @@ class ReviewController extends Controller {
     return view('reviews', [
         'dvd' => $dvd,
         'dvd_id' => $id,
-        'reviews' => $reviews
+        'reviews' => $reviews,
+        'rt_data' => $rt_data
     ]);
   }
 
